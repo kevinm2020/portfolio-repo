@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminUsers from "./pages/AdminUsers";
+import ArticlePage from "./pages/ArticlePage";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/article/:id" element={<ArticlePage />} />
 
 
         {/* Protected Admin Route */}

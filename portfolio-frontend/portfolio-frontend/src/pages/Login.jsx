@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import api from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./DeveloperCommentary.css";
+import DevNote from "../components/DevNote";
 
 function Login() {
 
@@ -48,12 +50,42 @@ function Login() {
     } 
     catch (error) 
     {
-      if (error.response && error.response.data) {
-        setError(error.response.data);
-      } else {
-        setError("Login failed. Please try again.");
-      }
       console.error("Login failed:", error);
+
+      if (error.response) {
+        
+        // Backend returned an error response
+        
+        if (error.response.status === 404) {
+          setError("User not found.");
+        }
+        else if (error.response.status === 401) {
+          setError("Invalid email or password.");
+        }
+        else if (typeof error.response.data === "string") {
+          setError(error.response.data);
+        }
+        else if (error.response.data?.message) {
+          setError(error.response.data.message);
+        }
+        else {
+          setError("Login failed. Please try again.");
+        }
+
+      } 
+      else if (error.request) {
+        
+        // No response from server
+        
+        setError("Cannot connect to server.");
+
+      } 
+      else {
+        
+        // Other error
+        
+        setError("An unexpected error occurred.");
+      }
     }
   };
 
@@ -78,6 +110,17 @@ function Login() {
       />
 
       <button type="submit">Login</button>
+
+      <div className="dev-wrapper">
+        <DevNote
+          title="Devloper Commentary: Login Page"
+          frontend=" This component manages the login form, handles user input, and communicates with the backend for authentication."
+          backend=" Here we are performing a POST request to the /api/auth/login endpoint for authentication."
+          security="On successful login, we store the token and user info in context. We also handle various error cases to provide feedback to the user."
+  
+        />
+      </div>
+
     </form>
   );
 }

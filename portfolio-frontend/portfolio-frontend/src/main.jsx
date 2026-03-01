@@ -16,13 +16,18 @@ import { BrowserRouter } from "react-router-dom";
 //Authentication context provider
 import { AuthProvider } from "./context/AuthContext";
 
+//Developer mode context provider
+import { DevModeProvider } from "./context/DevModeContext";
+
 //Create root and render the application
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
 
       <AuthProvider>
-        <App />
+        <DevModeProvider>
+           <App />
+        </DevModeProvider>
       </AuthProvider>
 
     </BrowserRouter>

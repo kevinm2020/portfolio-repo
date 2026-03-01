@@ -1,0 +1,23 @@
+.dev-wrapper {
+  position: relative;
+  display: inline-block; /* important */
+}
+
+/* Floating box */
+.dev-note {
+  position: absolute;
+  top: 0;
+  right: -240px; /* pushes it outside */
+  width: 220px;
+
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+
+  border: 1px solid gold;
+  border-radius: 10px;
+
+  padding: 10px;
+  font-size: 0.8rem;
+
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
