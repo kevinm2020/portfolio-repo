@@ -8,16 +8,18 @@ const AboutMeBlock = () => {
         {/* Top section: two pictures */}
         <div className="about-me-images">
             <img
-            src="/images/pic1.jpg"
+            src="/images/kevinpic.jpeg"
             alt="Profile 1"
             className="about-me-image"
+            
             />
             <img
-            src="/images/pic2.jpg"
+            src="/images/dexterpic.jpeg"
             alt="Profile 2"
             className="about-me-image"
             />
         </div>
+        <p>This is a picture of me, and my best friend Dexter.</p>
 
         {/* Title */}
         <h2 className="about-me-title">About Me</h2>

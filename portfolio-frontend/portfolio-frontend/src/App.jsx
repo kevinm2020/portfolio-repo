@@ -7,6 +7,7 @@ import AdminUsers from "./pages/AdminUsers";
 import ArticlePage from "./pages/ArticlePage";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
+import HealthCheck from "./components/HealthCheck";
 
 
 //Helper component to protect admin routes (renders conditionally based on auth status and role)
@@ -33,6 +34,8 @@ function App() {
 
       {/* Navigation bar always visible */}
       <Navbar />
+      {/* Health Check component always visible */}
+      <HealthCheck />
 
       {/* Route definitions */}
       <Routes>

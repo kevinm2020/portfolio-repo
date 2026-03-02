@@ -13,14 +13,7 @@ function Home() {
   const { isAuthenticated, role, email, token } = useContext(AuthContext);
 
   // Temporary placeholder data
-  const projects = [
-  {
-    name: "Lorem Ipsum",
-    date: "Feb 2026",
-    synopsis: "Lorem Ipsum.",
-    link: "/article/"
-  }
-];
+ 
 
   const articles = [
   {
@@ -28,6 +21,12 @@ function Home() {
     date: "Feb 2026",
     synopsis: "Introductory overview of AI and agent-based systems. Goal is demystify AI concepts for beginners, and walk through building a simple agent.",
     link: "/article/introduction-to-ai-and-agents"
+  },
+  {
+    name: "AWS and Splunk: A Beginner-Friendly Overview",
+    date: "Mar 2026",
+    synopsis: "Overview of AWS services and using Splunk for monitoring and observability.",
+    link: "/article/aws-and-splunk-overview"
   }
 ];
 
@@ -90,7 +89,7 @@ function Home() {
       
       {/* Projects, Music & Articles */}
 
-      <DropdownMenu title="Projects" items={projects} />
+     
       <DropdownMenu title="Articles" items={articles} />
       
     </div>
