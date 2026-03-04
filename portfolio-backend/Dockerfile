@@ -1,28 +1,23 @@
-# Use Maven + JDK to build the Spring Boot app
+# Stage 1: Build
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
-
-# Copy pom.xml and source code
 COPY pom.xml .
 COPY src ./src
 
-# Build the Spring Boot jar
+# Build the Spring Boot JAR
 RUN mvn clean package -DskipTests
 
-# Stage 2 — runtime
+# Stage 2: Runtime
 FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-# Copy the jar from build stage
+# Copy the JAR from build stage to /app
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port
 EXPOSE 8080
-
-# Use environment variable PORT if provided
 ENV PORT=8080
 
-# Run the jar
-ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
+# Run the backend using the correct path
+ENTRYPOINT ["sh", "-c", "java -jar /app/app.jar --server.port=$PORT"]

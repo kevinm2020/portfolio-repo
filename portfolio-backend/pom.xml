@@ -11,7 +11,7 @@
 	<groupId>Infosys</groupId>
 	<artifactId>portfolio-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>portfolio-backend</name>
 	<description>Backend: Kevin Martinez Portfolio</description>
 	<url/>
