@@ -1,19 +1,28 @@
-# Use Maven + JDK to build and run in one stage
-FROM maven:3.9.6-eclipse-temurin-21
+# Use Maven + JDK to build the Spring Boot app
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-# Copy Maven config first (speeds up rebuilds)
+# Copy pom.xml and source code
 COPY pom.xml .
-
-# Copy source code
 COPY src ./src
 
-# Build the Spring Boot jar (skip tests for speed)
+# Build the Spring Boot jar
 RUN mvn clean package -DskipTests
 
-# Expose port (Render injects PORT environment variable)
+# Stage 2 — runtime
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+# Copy the jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose port
 EXPOSE 8080
 
-# Run the jar dynamically using the only jar in target/
-CMD java -jar target/*.jar
+# Use environment variable PORT if provided
+ENV PORT=8080
+
+# Run the jar
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
