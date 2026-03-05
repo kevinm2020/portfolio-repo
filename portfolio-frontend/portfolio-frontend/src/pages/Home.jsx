@@ -27,12 +27,12 @@ function Home() {
     date: "Mar 2026",
     synopsis: "Overview of AWS services and using Splunk for monitoring and observability.",
     link: "/article/aws-and-splunk-overview"
-  }
+  },
   {
     name: "Deployment Strategies: Using Render to Host Your Full-Stack App",
     date: "Mar 2026",
-    synopsis: "Short guide on deploying full-stack applications using Render.",
-    link: "/article/deployment-strategies-render"
+    synopsis: "Short.",
+    link: "/article/aws-and-splunk-overview"
   }
 ];
 
