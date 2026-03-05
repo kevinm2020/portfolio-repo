@@ -44,8 +44,8 @@ function Login() {
 
       setSuccess("Login successful!");
       
-      //redirect to homepage after 1 second
-      setTimeout(() => navigate("/"), 1000);
+      //redirect to login page after successful login
+      navigate("/login");
 
     } 
     catch (error) 

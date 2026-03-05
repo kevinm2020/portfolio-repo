@@ -14,7 +14,7 @@ const AboutMeBlock = () => {
             
             />
             <img
-            src="/images/dexterpic.jpeg"
+            src="/images/dexterpic2.jpeg"
             alt="Profile 2"
             className="about-me-image"
             />

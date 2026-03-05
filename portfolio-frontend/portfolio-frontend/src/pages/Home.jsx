@@ -28,6 +28,12 @@ function Home() {
     synopsis: "Overview of AWS services and using Splunk for monitoring and observability.",
     link: "/article/aws-and-splunk-overview"
   }
+  {
+    name: "Deployment Strategies: Using Render to Host Your Full-Stack App",
+    date: "Mar 2026",
+    synopsis: "Short guide on deploying full-stack applications using Render.",
+    link: "/article/deployment-strategies-render"
+  }
 ];
 
   return (
@@ -58,8 +64,8 @@ function Home() {
       <h3>About This Site: </h3>
       <p>I am a software developer and designer based in Texas.
         This portfolio site is built with Springboot and React. 
-        I wanted a platform to showcase my projects, articles, and music. 
-        Feel free to explore the projracts and articles sections to see what I've been working on.
+        I wanted a platform to showcase my projects, research, and writing. 
+        Feel free to explore the projects and articles sections to see what I've been working on.
       </p>
       
       <p>"Never stop learning and creating!"</p>
