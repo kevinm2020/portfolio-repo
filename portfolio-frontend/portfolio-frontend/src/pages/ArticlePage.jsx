@@ -273,7 +273,7 @@ const articles =
     ),
   },
 
-  "application-shipping-and-deployment": {
+  "deployment-strategies-render": {
   title: "Application Shipping and Deployment for Beginners",
   author: "Kevin Martinez",
   content: (
@@ -331,7 +331,7 @@ const articles =
       </p>
     </>
   )
-}
+  }
 };
 
 
