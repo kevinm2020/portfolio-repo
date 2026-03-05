@@ -9,13 +9,13 @@ const AboutMeBlock = () => {
         <div className="about-me-images">
             <img
             src="/images/kevinpic.jpeg"
-            alt="Profile 1"
+            alt="Kevin"
             className="about-me-image"
             
             />
             <img
             src="/images/dexterpic2.jpeg"
-            alt="Profile 2"
+            alt="Dexter"
             className="about-me-image"
             />
         </div>
