@@ -273,7 +273,7 @@ const articles =
     ),
   },
 
-  "Deployment Strategies: Using Render to Host Your Full-Stack App": {
+  "deployment-strategies-render": {
   title: "deployment-strategies-render",
   author: "Kevin Martinez",
   content: (
