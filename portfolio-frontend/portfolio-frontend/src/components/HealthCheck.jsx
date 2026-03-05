@@ -13,7 +13,7 @@ function HealthCheck()
     {
         const start = performance.now();
 
-         const response = await fetch("http://localhost:8080/pong");
+         const response = await fetch("https://kevin-martinez-portfolio-backend.onrender.com/pong");
 
         if (!response.ok) 
         {

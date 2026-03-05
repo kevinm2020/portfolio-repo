@@ -9,7 +9,7 @@ function AdminUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await api.get("/api/auth/all");
+        const response = await api.get("https://kevin-martinez-portfolio-backend.onrender.com/auth/all");
               if (Array.isArray(response.data)) {
                 setUsers(response.data);
               } else {

@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create reusable axios instance
 const api = axios.create({
-  baseURL: "http://localhost:8080", // Your Spring Boot backend
+  baseURL: "https://kevin-martinez-portfolio-backend.onrender.com", // Your Spring Boot backend
 });
 
 /**
