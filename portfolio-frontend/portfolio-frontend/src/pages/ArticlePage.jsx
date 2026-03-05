@@ -273,11 +273,65 @@ const articles =
     ),
   },
 
+  "application-shipping-and-deployment": {
+  title: "Application Shipping and Deployment for Beginners",
+  author: "Kevin Martinez",
+  content: (
+    <article>
+      <h2>Chapter 01: The Situation I am in</h2>
+      <p>
+        I developed my portfolio website with Spring Boot and React. I’ve also always avoided website deployment because it seems too exhaustive and boring to me. In the industry, there are entire cloud and deployment teams. As a website developer, I just wanted to focus on making my site look nice, not having to deal with getting it to the expansive and eternal internet we know today. But why not take a stab at learning something new.
+      </p>
+      <p>
+        In fact, I am forced to. If no one can access my portfolio website, it’s like I nor my professional career exists. A lesson I learned in life is that usually what you avoid is what you must do next.
+      </p>
+      <p>
+        My application is currently running on my laptop: Localhost:3000 & Localhost:8080. Shipping and Deployment is essentially getting out of my laptop. I want the frontend to live on a server. The backend will run continuously on a machine with a public IP address. When users visit my domain, their browser will load the frontend I’ve developed. From there the frontend will make HTTP requests to the backend running on the machine.
+      </p>
+      <p>
+        I will be choosing Render Static Site to host my frontend and Render Web Service for the backend. At a high level, these are the steps:
+      </p>
+      <ul>
+        <li>Package Backend</li>
+        <li>Deploy Backend</li>
+        <li>Build Frontend</li>
+        <li>Deploy Frontend</li>
+        <li>Fix CORS</li>
+        <li>Update API URL</li>
+      </ul>
 
-  
+      <h2>Chapter 2: Time to Start - Backend</h2>
+      <ol>
+        <li>Upload Backend to GitHub</li>
+        <li>Go to Render and Create an Account</li>
+        <li>Set up Render Web Service to GitHub Repo</li>
+        <li>Enable CORS</li>
+        <li>Deploy</li>
+      </ol>
+      <p>
+        This is what the end goal looks like (picture). I want to talk about a challenge I faced, because that is how you learn if you encounter it again.
+      </p>
+      <h3>Challenges</h3>
+      <p>
+        The Render Service does not support Java directly; it must use a Docker container of my application, which is what it’s hosting on the server. Containerized applications are a great skill to begin. I’ll have to write a chapter about it later. The challenge was writing and implementing Docker for the first time.
+      </p>
 
+      <h2>Frontend</h2>
+      <p>
+        The Frontend follows a similar approach. I will also be using Render. Now that the backend is live on a server, what does this mean? Our frontend is still doing backend calls to the localhost endpoint. We must swap that URL for the one where the Render server hosts our application. Make sure to enable CORS configuration.
+      </p>
+      <h3>Challenges</h3>
+      <p>
+        A challenge I faced on this issue was setting up the CORS configuration. It took me a few attempts to get the security just right so the frontend can successfully touch the backend.
+      </p>
 
-
+      <h2>Next Steps</h2>
+      <p>
+        Next steps for me are debugging the application so the services work. Sometimes what works on your laptop does not fully translate into production-ready servers. Fix accordingly.
+      </p>
+    </article>
+  )
+}
 };
 
 

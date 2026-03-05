@@ -31,8 +31,8 @@ function Home() {
   {
     name: "Deployment Strategies: Using Render to Host Your Full-Stack App",
     date: "Mar 2026",
-    synopsis: "Short.",
-    link: "/article/aws-and-splunk-overview"
+    synopsis: "Short guide on deploying a full-stack app using Render.com, covering both frontend and backend deployment steps.",
+    link: "/article/deployment-strategies-render"
   }
 ];
 
