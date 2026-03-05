@@ -19,6 +19,7 @@ import com.kevin.portfolio.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AuthController {
     
