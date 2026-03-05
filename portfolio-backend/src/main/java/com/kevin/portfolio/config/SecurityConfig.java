@@ -71,7 +71,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedOrigins(List.of(
+            "http://localhost:5173",
+            "https://kevin-martinez-portfolio-frontend.onrender.com"
+        ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
@@ -140,5 +143,11 @@ Authorization
 Controller
         ↓
 Response
+
+setAllowedOrigins(List.of(...)) → explicitly lists your frontend domain(s) → ✅ required when allowCredentials(true)
+setAllowedMethods(...) → GET, POST, etc. → ✅ good
+setAllowedHeaders(List.of("*")) → allows Authorization header → ✅ needed for JWT
+setAllowCredentials(true) → allows JWT / cookies to be sent → ✅ required
+
 
 */
