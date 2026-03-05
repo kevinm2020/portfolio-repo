@@ -80,7 +80,7 @@ function Register() {
 
     try 
     {
-      await api.post("https://kevin-martinez-portfolio-backend.onrender.com/auth/register", {
+      await api.post("https://kevin-martinez-portfolio-backend.onrender.com/api/auth/register", {
       firstName: firstName.trim(),
       lastName: lastName.trim(),
       email: email.trim().toLowerCase(),

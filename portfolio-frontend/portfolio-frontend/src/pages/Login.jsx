@@ -35,7 +35,7 @@ function Login() {
 
     try 
     {
-      const response = await api.post("https://kevin-martinez-portfolio-backend.onrender.com/auth/login", { email, password });
+      const response = await api.post("https://kevin-martinez-portfolio-backend.onrender.com/api/auth/login", { email, password });
       login({
         token: response.data.token,
         role: response.data.role,
