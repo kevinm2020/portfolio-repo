@@ -277,7 +277,7 @@ const articles =
   title: "Application Shipping and Deployment for Beginners",
   author: "Kevin Martinez",
   content: (
-    <article>
+    <>
       <h2>Chapter 01: The Situation I am in</h2>
       <p>
         I developed my portfolio website with Spring Boot and React. I’ve also always avoided website deployment because it seems too exhaustive and boring to me. In the industry, there are entire cloud and deployment teams. As a website developer, I just wanted to focus on making my site look nice, not having to deal with getting it to the expansive and eternal internet we know today. But why not take a stab at learning something new.
@@ -329,7 +329,7 @@ const articles =
       <p>
         Next steps for me are debugging the application so the services work. Sometimes what works on your laptop does not fully translate into production-ready servers. Fix accordingly.
       </p>
-    </article>
+    </>
   )
 }
 };
