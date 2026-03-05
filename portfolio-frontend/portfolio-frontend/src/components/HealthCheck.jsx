@@ -13,7 +13,9 @@ function HealthCheck()
     {
         const start = performance.now();
 
-         const response = await fetch("https://kevin-martinez-portfolio-backend.onrender.com/pong");
+        const response = await fetch("https://kevin-martinez-portfolio-backend.onrender.com/pong");
+
+        console.log("Response status:", response.status);
 
         if (!response.ok) 
         {
@@ -21,6 +23,7 @@ function HealthCheck()
         }
 
         const data = await response.json();
+        console.log("Response status:", response.status);
         const end = performance.now();
         const responseTime = Math.round(end - start);
 
