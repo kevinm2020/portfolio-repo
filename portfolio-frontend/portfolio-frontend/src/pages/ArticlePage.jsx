@@ -273,8 +273,8 @@ const articles =
     ),
   },
 
-  "deployment-strategies-render": {
-  title: "Application Shipping and Deployment for Beginners",
+  "Deployment Strategies: Using Render to Host Your Full-Stack App": {
+  title: "deployment-strategies-render",
   author: "Kevin Martinez",
   content: (
     <>
@@ -331,7 +331,7 @@ const articles =
       </p>
     </>
   )
-  }
+}
 };
 
 
