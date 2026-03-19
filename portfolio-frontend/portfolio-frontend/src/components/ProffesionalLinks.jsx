@@ -7,7 +7,7 @@ export default function ProfessionalLinks() {
 
     const linkedInUrl = 'https://www.linkedin.com/in/kevin-martinez-lara-37b115331/';
     const gitHubUrl = "https://github.com/kevinm2020";
-    const resumeUrl = "https://your-website.com/resume.pdf";
+
 
     const containerStyle = {
         display: 'flex',
@@ -46,13 +46,16 @@ export default function ProfessionalLinks() {
                 GitHub
             </button>
 
-            {/* Resume Button */}
-            <button
-                style={{ ...buttonStyle, backgroundColor: "#4CAF50", color: "#fff" }}
-                onClick={() => window.open(resumeUrl, "_blank")}
+           {/* Resume Button */}
+           {/* Resume Button */}
+            <a
+            href="/KMLResumeMARCH2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             >
-                Resume
-            </button>
+            <button>View Resume</button>
+            </a>
+
         </div>
     );
 
