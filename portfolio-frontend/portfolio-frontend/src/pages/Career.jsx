@@ -49,8 +49,12 @@ function Career() {
                         title="Infosys"
                         subtitle="Software Developer"
                     >
+                        <h3>
+                            Infosys
+                        </h3>
+
                         <p>
-                        
+                            Participating in structured training and self-driven learning focused on backend development and enterprise technologies. Building technical proficiency through hands-on practice, problem-solving, and independent study of real-world software engineering concepts.
                         </p>
                     </VerticalTimelineElement>
 
@@ -59,8 +63,12 @@ function Career() {
                         title="Revature "
                         subtitle="Trainee"
                     >
+                        <h3>
+                            Revature
+                        </h3>
+
                         <p>
-                        
+                            Completed an intensive training program focused on Java and REST API application development. Built backend services and full-stack applications while strengthening skills in data structures, problem-solving, and real-world software development practices.
                         </p>
                     </VerticalTimelineElement>
 
@@ -69,8 +77,12 @@ function Career() {
                         title="Texas Financial Advisors"
                         subtitle="Junior Finicial Consultant"
                     >
+                        <h3>
+                            Texas Financial Advisors
+                        </h3>
+
                         <p>
-                        
+                            Provided client advisory support focused on 401(k) planning and asset management, developing strong communication and analytical skills. Worked with structured financial data to support decision-making in a professional environment. Earned the SIE and Series 65 certifications, demonstrating knowledge of financial systems, regulations, and investment principles.
                         </p>
                     </VerticalTimelineElement>
 
@@ -79,8 +91,12 @@ function Career() {
                         title="University of Texas at Dallas"
                         subtitle="B.S. in Computer Science"
                     >
+                        <h3>
+                            University of Texas at Dallas
+                        </h3>
+
                         <p>
-                        
+                            Pursued a B.S. in Computer Science, building a strong foundation in algorithms, data structures, and software engineering. Completed projects involving full-stack development and system design principles.
                         </p>
                     </VerticalTimelineElement>
                     </VerticalTimeline>

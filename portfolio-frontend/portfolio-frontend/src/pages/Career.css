@@ -1,7 +1,16 @@
 .career-page {
   padding: 2rem;
-  color: white;
+   color: inherit;
 }
+
+.vertical-timeline-element-content {
+  color: var(--text-color, #111);
+}
+.vertical-timeline-element-title,
+.vertical-timeline-element-subtitle {
+  color: inherit !important;
+}
+
 
 h1, h2 {
   margin-bottom: 1rem;

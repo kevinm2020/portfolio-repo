@@ -25,7 +25,7 @@ function Navbar() {
     <nav>
       {/* Always visible */}
       <Link to="/">Home Page</Link>{" | "}
-      <Link to="/career">Career Page</Link>
+      <Link to="/career"> NEW! CAREER PAGE</Link>{" | "}
 
 
       {/* Show Login/Register only if NOT authenticated */}
