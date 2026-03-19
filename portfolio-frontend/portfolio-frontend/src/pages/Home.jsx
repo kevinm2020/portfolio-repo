@@ -6,11 +6,14 @@ import StarAuth from "../components/StarAuth";
 import DevNote from "../components/DevNote";
 import ProfessionalLinks from "../components/ProffesionalLinks";
 import "./DeveloperCommentary.css";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
 
 function Home() {
   // Pull authentication state and user info from the AuthContext
   // These values will automatically update when login() or logout() is called
   const { isAuthenticated, role, email, token } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // Temporary placeholder data
  
@@ -70,10 +73,28 @@ function Home() {
       
       <p>"Never stop learning and creating!"</p>
 
-      
-      
-     
+      {/* Star Projects Section */}
+      <div>
+      <section className="hero">
+        <h1>Building at the intersection of AI and Sound</h1>
+        <p>
+          Exploring how artificial intelligence can analyze, understand, and
+          transform music and creativity.
+        </p>
 
+        <div className="hero-buttons">
+          <button onClick={() => navigate("/sonic-ai")}>
+            Explore Sonic AI
+          </button>
+
+          <button onClick={() => navigate("/ai-book")}>
+            Read the AI Book
+          </button>
+        </div>
+      </section>
+    </div>
+
+  
       <div className="dev-wrapper">
 
         {/* Authentication Star Section */}

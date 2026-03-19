@@ -9,6 +9,8 @@ import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import HealthCheck from "./components/HealthCheck";
 import Career from "./pages/Career";
+import SonicAI from "./pages/SonicAI";
+import AIBook from "./pages/AIBook";
 
 
 //Helper component to protect admin routes (renders conditionally based on auth status and role)
@@ -45,6 +47,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/article/:id" element={<ArticlePage />} />
         <Route path="/career" element={<Career />} />
+        <Route path="/sonic-ai" element={<SonicAI />} />
+        <Route path="/ai-book" element={<AIBook />} />
 
 
         {/* Protected Admin Route */}
