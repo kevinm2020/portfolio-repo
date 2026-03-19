@@ -8,6 +8,7 @@ import ArticlePage from "./pages/ArticlePage";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import HealthCheck from "./components/HealthCheck";
+import Career from "./pages/Career";
 
 
 //Helper component to protect admin routes (renders conditionally based on auth status and role)
@@ -43,6 +44,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/article/:id" element={<ArticlePage />} />
+        <Route path="/career" element={<Career />} />
 
 
         {/* Protected Admin Route */}

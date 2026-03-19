@@ -24,14 +24,15 @@ function Navbar() {
   return (
     <nav>
       {/* Always visible */}
-      <Link to="/">Home</Link>{" | "}
+      <Link to="/">Home Page</Link>{" | "}
+      <Link to="/career">Career Page</Link>
 
 
       {/* Show Login/Register only if NOT authenticated */}
       {!isAuthenticated && (
         <>
-          <Link to="/login">Login</Link>{" | "}
-          <Link to="/register">Register</Link>
+          <Link to="/login">Login Page</Link>{" | "}
+          <Link to="/register">Register Page</Link>
         </>
       )}
 
