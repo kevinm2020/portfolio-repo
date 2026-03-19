@@ -44,8 +44,8 @@ function Login() {
 
       setSuccess("Login successful!");
       
-      //redirect to login page after successful login
-      navigate("/login");
+      //redirect to home page after successful login
+      navigate("/", { replace: true });
 
     } 
     catch (error) 

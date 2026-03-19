@@ -90,7 +90,7 @@ function Register() {
 
       // After register, send user to login page
       setSuccess("Registration successful!");
-      setTimeout(() => navigate("/login"), 1000);
+      navigate("/login", { replace: true });  
 
     } 
     catch (err) 
