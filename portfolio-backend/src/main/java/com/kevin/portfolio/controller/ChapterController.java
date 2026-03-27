@@ -14,6 +14,12 @@ import java.util.List;
 public class ChapterController {
  
     private final ChapterService chapterService;
+
+     // CREATE chapter
+    @PostMapping
+    public Chapter createChapter(@RequestBody Chapter chapter) {
+        return chapterService.saveChapter(chapter);
+    }
  
     // GET /api/chapters — list of all published chapters
     @GetMapping

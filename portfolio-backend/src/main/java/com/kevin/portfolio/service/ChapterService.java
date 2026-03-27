@@ -17,6 +17,11 @@ public class ChapterService {
     public List<Chapter> getPublishedChapters() {
         return chapterRepository.findAllByPublishedTrueOrderByNumberAsc();
     }
+
+    public Chapter saveChapter(Chapter chapter) 
+    {
+        return chapterRepository.save(chapter);
+    }
  
     // Returns a single chapter with full content
     public Chapter getChapterById(Long id) {
