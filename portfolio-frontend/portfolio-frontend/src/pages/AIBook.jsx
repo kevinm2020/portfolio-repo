@@ -21,8 +21,6 @@ function AIBook() {
         building my AI agent: Sonic
       </h3>
 
-      <p className="status">✍️ In Progress</p>
-
       <h2>Table of Contents</h2>
 
       <table>
