@@ -11,6 +11,7 @@ import HealthCheck from "./components/HealthCheck";
 import Career from "./pages/Career";
 import SonicAI from "./pages/SonicAI";
 import AIBook from "./pages/AIBook";
+import ChapterDetail from "./pages/ChapterDetail";
 
 
 //Helper component to protect admin routes (renders conditionally based on auth status and role)
@@ -49,6 +50,7 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/sonic-ai" element={<SonicAI />} />
         <Route path="/ai-book" element={<AIBook />} />
+        <Route path="/chapters/:id" element={<ChapterDetail />} />
 
 
         {/* Protected Admin Route */}
