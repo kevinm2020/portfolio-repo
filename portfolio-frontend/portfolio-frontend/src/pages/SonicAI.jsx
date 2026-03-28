@@ -12,6 +12,7 @@ const SonicAnalyzer = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [backendStatus, setBackendStatus] = useState("checking"); 
 
   // ✅ Load history from localStorage on mount
   useEffect(() => {
@@ -25,6 +26,28 @@ const SonicAnalyzer = () => {
   useEffect(() => {
     localStorage.setItem("sonicHistory", JSON.stringify(history));
   }, [history]);
+
+  useEffect(() => {
+  const checkHealth = async () => {
+    try {
+      const res = await fetch("https://sonicai-0u5p.onrender.com/health");
+      const data = await res.json();
+
+      if (data.status === "ok") {
+        setBackendStatus("ok");
+      } else {
+        setBackendStatus("error");
+      }
+    } catch (err) {
+      setBackendStatus("error");
+    }
+  };
+
+  checkHealth();
+
+  const interval = setInterval(checkHealth, 30000);
+  return () => clearInterval(interval);
+}, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +94,12 @@ const SonicAnalyzer = () => {
 
       <h2 className="sonic-title">Sonic AI Analyzer</h2>
       <h3 className="sonic-subtitle">Analyze Your Favorite Songs</h3>
+
+      <div className="sonic-status">
+        {backendStatus === "checking" && <p>🟡 Connecting to Sonic AI...</p>}
+        {backendStatus === "ok" && <p>🟢 Sonic AI is online</p>}
+        {backendStatus === "error" && <p>🔴 Sonic AI is offline</p>}
+      </div>
 
       {/* FORM */}
       <form className="sonic-form" onSubmit={handleSubmit}>
