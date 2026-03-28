@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {analyzeSong} from "../api/sonicAPI";
 import ReactMarkdown from "react-markdown";
 import "./sonic.css";
+import DevNote from "../components/DevNote";
 
 const SonicAnalyzer = () => {
 
@@ -59,6 +60,14 @@ const SonicAnalyzer = () => {
 
   return (
     <div className="sonic-container">
+
+      <div className="dev-wrapper">
+       <DevNote
+          title="Sonic AI (microservice) DevNotes"
+          frontend="The frontend is used for the user to input a song and artist, and display the analysis results. It also maintains a local history of recent analyses using localStorage." 
+          backend="Sonic AI is it's own seperate microservice. Sonic AI was developed in Python, and hosted as Render Web service. Sonic Ai has an enpoint to recieve song/artist input, and output analysis results."
+      />
+      </div>
 
       <h2 className="sonic-title">Sonic AI Analyzer</h2>
       <h3 className="sonic-subtitle">Analyze Your Favorite Songs</h3>

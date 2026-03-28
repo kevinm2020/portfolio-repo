@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DevNote from "../components/DevNote";
 
 function AIBook() {
   const [chapters, setChapters] = useState([]);
@@ -20,6 +21,15 @@ function AIBook() {
         A practical guide to building intelligent, autonomous systems through
         building my AI agent: Sonic
       </h3>
+
+       <div className="dev-wrapper">
+       <DevNote
+          title="AI Book DevNotes"
+          frontend="I hosted a Render Postgres database to store article content. The frontend fetches chapter data from the backend and renders it here in the frontend. Each chapter has a Read button that navigates to a dedicated page for that chapter." 
+          backend="I added new infrastructure for hosting and serving articles. The backend now has a new Article entity, repository, and controller.
+          I also added a PostgreSQL database to store article content."
+      />
+      </div>
 
       <h2>Table of Contents</h2>
 
