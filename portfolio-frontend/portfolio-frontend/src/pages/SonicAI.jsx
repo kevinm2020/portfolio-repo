@@ -14,7 +14,7 @@ const SonicAnalyzer = () => {
   const [error, setError] = useState(null);
   const [backendStatus, setBackendStatus] = useState("checking"); 
 
-  // ✅ Load history from localStorage on mount
+  // Load history from localStorage on mount
   useEffect(() => {
     const savedHistory = localStorage.getItem("sonicHistory");
     if (savedHistory) {
@@ -22,7 +22,7 @@ const SonicAnalyzer = () => {
     }
   }, []);
 
-  // ✅ Save history to localStorage whenever it changes
+  // Save history to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("sonicHistory", JSON.stringify(history));
   }, [history]);
@@ -65,7 +65,7 @@ const SonicAnalyzer = () => {
       const data = await analyzeSong(song, artist);
       setResult(data);
 
-      // ✅ Add to history (newest first)
+      // Add to history (newest first)
       setHistory((prev) => [data, ...prev.slice(0, 9)]); // limit to 10 items
 
     } catch (err) {
@@ -92,14 +92,16 @@ const SonicAnalyzer = () => {
       />
       </div>
 
-      <h2 className="sonic-title">Sonic AI Analyzer</h2>
-      <h3 className="sonic-subtitle">Analyze Your Favorite Songs</h3>
+      <h1 className="sonic-title">Sonic AI Song Analyzer - BETA 1.0</h1>
+       <h2 className="sonic-subtitle">Built with React, Python, Spotify API and Open AI LLM API</h2>
+      <h4 className="sonic-subtitle">Instructions: Enter a song and artist to analyze</h4>
 
       <div className="sonic-status">
         {backendStatus === "checking" && <p>🟡 Connecting to Sonic AI...</p>}
         {backendStatus === "ok" && <p>🟢 Sonic AI is online</p>}
         {backendStatus === "error" && <p>🔴 Sonic AI is offline</p>}
       </div>
+      
 
       {/* FORM */}
       <form className="sonic-form" onSubmit={handleSubmit}>
@@ -107,7 +109,7 @@ const SonicAnalyzer = () => {
         <input
           className="sonic-input"
           type="text"
-          placeholder="Song"
+          placeholder="Song Title"
           value={song}
           onChange={(e) => setSong(e.target.value)}
         />
@@ -115,7 +117,7 @@ const SonicAnalyzer = () => {
         <input
           className="sonic-input"
           type="text"
-          placeholder="Artist"
+          placeholder="Artist Name"
           value={artist}
           onChange={(e) => setArtist(e.target.value)}
         />

@@ -15,12 +15,13 @@ function AIBook() {
 
   return (
     <div className="project-page">
-      <h1>An introduction to AI Agents & Development</h1>
-      <h2>Written by: Kevin Martinez</h2>
-      <h3>
-        A practical guide to building intelligent, autonomous systems through
-        building my AI agent: Sonic
-      </h3>
+      <h1>Building AI Agents from Scratch</h1>
+      <h2>by Kevin Martinez</h2>
+      <p className="hero-description">
+        I wrote this guide while building Sonic AI to break down how AI agents actually work—beyond the hype.
+        It’s designed for developers who want to understand and build intelligent systems from the ground up,
+        using real examples, architecture, and code.
+      </p>
 
        <div className="dev-wrapper">
        <DevNote
@@ -30,6 +31,11 @@ function AIBook() {
           I also added a PostgreSQL database to store article content."
       />
       </div>
+
+      <h2>Explore the Chapters</h2>
+      <p>
+        Each chapter builds on the last, combining theory with real implementation details.
+      </p>
 
       <h2>Table of Contents</h2>
 
@@ -50,7 +56,7 @@ function AIBook() {
               <td>{chapter.description}</td>
               <td>
                 <button onClick={() => navigate(`/chapters/${chapter.id}`)}>
-                  Read
+                  Read Chapter
                 </button>
               </td>
             </tr>
