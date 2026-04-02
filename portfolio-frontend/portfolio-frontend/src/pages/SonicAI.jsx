@@ -5,11 +5,12 @@ import "./sonic.css";
 import DevNote from "../components/DevNote";
 
 // Helper: format a 0–1 metric as a percentage string
-const pct = (val) => (val !== null && val !== undefined ? `${Math.round(val * 100)}%` : "N/A");
+const pct = (val) =>
+  val !== null && val !== undefined ? `${Math.round(val * 100)}%` : "N/A";
 
 // Helper: format seconds as m:ss
 const formatDuration = (secs) => {
-  if (!secs) return "N/A";
+  if (secs === null || secs === undefined) return "N/A";
   const m = Math.floor(secs / 60);
   const s = secs % 60;
   return `${m}:${s.toString().padStart(2, "0")}`;
@@ -24,7 +25,7 @@ const SonicAnalyzer = () => {
   const [error, setError] = useState(null);
   const [backendStatus, setBackendStatus] = useState("checking");
 
-  // Load history from localStorage on mount
+  // Load history
   useEffect(() => {
     const savedHistory = localStorage.getItem("sonicHistory");
     if (savedHistory) {
@@ -32,12 +33,12 @@ const SonicAnalyzer = () => {
     }
   }, []);
 
-  // Save history to localStorage whenever it changes
+  // Save history
   useEffect(() => {
     localStorage.setItem("sonicHistory", JSON.stringify(history));
   }, [history]);
 
-  // Poll backend health every 30s
+  // Health check
   useEffect(() => {
     const checkHealth = async () => {
       try {
@@ -69,7 +70,7 @@ const SonicAnalyzer = () => {
     try {
       const data = await analyzeSong(song, artist);
       setResult(data);
-      setHistory((prev) => [data, ...prev.slice(0, 9)]); // keep last 10
+      setHistory((prev) => [data, ...prev.slice(0, 9)]);
     } catch (err) {
       if (err.response) {
         setError("Server error. Try again later.");
@@ -89,19 +90,17 @@ const SonicAnalyzer = () => {
       <div className="dev-wrapper">
         <DevNote
           title="Sonic AI (microservice) DevNotes"
-          frontend="The frontend is used for the user to input a song and artist, and display the analysis results. It also maintains a local history of recent analyses using localStorage."
-          backend="Sonic AI is its own separate microservice. Sonic AI was developed in Python, and hosted as a Render Web service. Sonic AI has an endpoint to receive song/artist input, and output analysis results."
+          frontend="Frontend handles input, rendering, and local history via localStorage."
+          backend="Backend is a FastAPI microservice deployed on Render."
         />
       </div>
 
       <h1 className="sonic-title">Sonic AI Song Analyzer - BETA 1.5</h1>
-      <h2 className="sonic-subtitle">Built with React, Python, Spotify API and OpenAI LLM API</h2>
-      <h4 className="sonic-subtitle">Instructions: Enter a song and artist to analyze</h4>
 
       <div className="sonic-status">
-        {backendStatus === "checking" && <p>🟡 Connecting to Sonic AI...</p>}
-        {backendStatus === "ok"       && <p>🟢 Sonic AI is online</p>}
-        {backendStatus === "error"    && <p>🔴 Sonic AI is offline</p>}
+        {backendStatus === "checking" && <p>🟡 Connecting...</p>}
+        {backendStatus === "ok" && <p>🟢 Online</p>}
+        {backendStatus === "error" && <p>🔴 Offline</p>}
       </div>
 
       {/* FORM */}
@@ -125,88 +124,63 @@ const SonicAnalyzer = () => {
         </button>
       </form>
 
-      {loading && <p className="sonic-loading">Analyzing your track...might take a minute...hang on</p>}
-      {error   && <p className="sonic-error">{error}</p>}
+      {loading && <p>Analyzing...</p>}
+      {error && <p className="sonic-error">{error}</p>}
 
       {/* RESULT */}
       {result && (
         <div className="sonic-result">
-
-          {/* Title / Artist */}
-          <h3 className="sonic-result-title">
+          <h3>
             {result.title} — {result.artist}
           </h3>
 
-          {/* Metadata row */}
-          <div className="sonic-meta">
-            <p><strong>Album:</strong> {result.album}</p>
-            <p><strong>Released:</strong> {result.release_date || "N/A"}</p>
-            <p><strong>Duration:</strong> {formatDuration(result.duration)}</p>
-            <p><strong>Explicit:</strong> {result.explicit !== null ? (result.explicit ? "Yes" : "No") : "N/A"}</p>
-            <p><strong>Popularity:</strong> {result.popularity !== null ? `${result.popularity}/100` : "N/A"}</p>
-          </div>
+          <p><strong>Album:</strong> {result.album}</p>
+          <p><strong>Released:</strong> {result.release_date || "N/A"}</p>
+          <p><strong>Duration:</strong> {formatDuration(result.duration)}</p>
+          <p><strong>Explicit:</strong> {result.explicit ? "Yes" : "No"}</p>
+          <p><strong>Popularity:</strong> {result.popularity ?? "N/A"}</p>
 
-          {/* Musical key / tempo */}
-          <div className="sonic-musical">
-            <p><strong>Key:</strong> {result.key || "N/A"} {result.mode || ""}</p>
-            <p><strong>Tempo:</strong> {result.tempo ? `${Math.round(result.tempo)} BPM` : "N/A"}</p>
-            <p><strong>Time Signature:</strong> {result.time_signature ? `${result.time_signature}/4` : "N/A"}</p>
-            <p><strong>Loudness:</strong> {result.loudness !== null ? `${result.loudness} dB` : "N/A"}</p>
-          </div>
+          <p><strong>Key:</strong> {result.key || "N/A"} {result.mode || ""}</p>
+          <p><strong>Tempo:</strong> {result.tempo ? `${Math.round(result.tempo)} BPM` : "N/A"}</p>
 
-          {/* Vibe metrics */}
-          <div className="sonic-metrics">
-            <h4>Audio Features</h4>
-            <ul>
-              <li><strong>Energy:</strong> {pct(result.energy)}</li>
-              <li><strong>Danceability:</strong> {pct(result.danceability)}</li>
-              <li><strong>Valence (mood):</strong> {pct(result.valence)}</li>
-              <li><strong>Speechiness:</strong> {pct(result.speechiness)}</li>
-              <li><strong>Acousticness:</strong> {pct(result.acousticness)}</li>
-              <li><strong>Instrumentalness:</strong> {pct(result.instrumentalness)}</li>
-              <li><strong>Liveness:</strong> {pct(result.liveness)}</li>
-            </ul>
-          </div>
+          <h4>Audio Features</h4>
+          <ul>
+            <li>Energy: {pct(result.energy)}</li>
+            <li>Danceability: {pct(result.danceability)}</li>
+            <li>Valence: {pct(result.valence)}</li>
+            <li>Speechiness: {pct(result.speechiness)}</li>
+            <li>Acousticness: {pct(result.acousticness)}</li>
+            <li>Instrumentalness: {pct(result.instrumentalness)}</li>
+            <li>Liveness: {pct(result.liveness)}</li>
+          </ul>
 
-          {/* Chords */}
           <h4>Chords</h4>
-          <ul className="sonic-chords">
+          <ul>
             {result.chords.length > 0 ? (
-              result.chords.map((chord, index) => (
-                <li key={index}>{chord}</li>
-              ))
+              result.chords.map((chord, i) => <li key={i}>{chord}</li>)
             ) : (
               <li>No chords available</li>
             )}
           </ul>
 
-          {/* LLM Analysis */}
           <h4>Analysis</h4>
-          <div className="sonic-analysis">
-            <ReactMarkdown>{result.analysis}</ReactMarkdown>
-          </div>
-
+          <ReactMarkdown>{result.analysis}</ReactMarkdown>
         </div>
       )}
 
       {/* HISTORY */}
       {history.length > 0 && (
-        <div className="sonic-history">
-          <h3 className="sonic-history-title">Recent Analyses</h3>
-          <ul className="sonic-history-list">
+        <div>
+          <h3>Recent Analyses</h3>
+          <ul>
             {history.map((item, index) => (
-              <li
-                key={index}
-                className="sonic-history-item"
-                onClick={() => setResult(item)}
-              >
-                {item?.title || "Unknown"} — {item?.artist || "Unknown"}
+              <li key={index} onClick={() => setResult(item)}>
+                {item.title} — {item.artist}
               </li>
             ))}
           </ul>
         </div>
       )}
-
     </div>
   );
 };
