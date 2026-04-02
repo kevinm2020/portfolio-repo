@@ -95,7 +95,9 @@ const SonicAnalyzer = () => {
         />
       </div>
 
-      <h1 className="sonic-title">Sonic AI Song Analyzer - BETA 1.5</h1>
+      <h1 className="sonic-title">Sonic AI Song Analyzer - BETA 1.5</h1> 
+      <h2 className="sonic-subtitle">Built with React, Python, Spotify API and OpenAI LLM API</h2>
+       <h4 className="sonic-subtitle">Instructions: Enter a song and artist to analyze</h4>
 
       <div className="sonic-status">
         {backendStatus === "checking" && <p>🟡 Connecting...</p>}
