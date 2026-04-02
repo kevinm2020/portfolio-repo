@@ -36,33 +36,35 @@ function normalizeResponse(raw) {
     // Core identity
     title: metadata.title || "Unknown Title",
     artist: metadata.artist || "Unknown Artist",
-    album: spotify.album || metadata.album || "Unknown Album",
+    album: metadata.album || "Unknown Album",
     release_date: metadata.release_date || null,
 
     // Playback info
-    duration,           // seconds
-    explicit: spotify.explicit ?? null,
-    popularity: spotify.popularity ?? null,
+    duration,
+    explicit: features.explicit ?? null,
+    popularity: features.popularity ?? null,
 
     // Musical features
-    tempo: spotify.tempo ?? null,
-    key: spotify.key ?? null,         // e.g. "D"
-    mode: spotify.mode ?? null,       // "Major" / "Minor"
-    time_signature: spotify.time_signature ?? null,
-    loudness: spotify.loudness ?? null,
+    tempo: features.tempo ?? null,
+    key: features.key ?? null,
+    mode: features.mode ?? null,
+    time_signature: features.time_signature ?? null,
+    loudness: features.loudness ?? null,
 
-    // Vibe metrics (0.0 – 1.0)
-    energy: spotify.energy ?? null,
-    danceability: spotify.danceability ?? null,
-    valence: spotify.valence ?? null,
-    speechiness: spotify.speechiness ?? null,
-    acousticness: spotify.acousticness ?? null,
-    instrumentalness: spotify.instrumentalness ?? null,
-    liveness: spotify.liveness ?? null,
+    // Vibe metrics
+    energy: features.energy ?? null,
+    danceability: features.danceability ?? null,
+    valence: features.valence ?? null,
+    speechiness: features.speechiness ?? null,
+    acousticness: features.acousticness ?? null,
+    instrumentalness: features.instrumentalness ?? null,
+    liveness: features.liveness ?? null,
 
     // Chords & analysis
     chords,
-    analysis: raw?.analysis || "No analysis available.",
+    analysis: raw?.analysis?.analysis
+      ? formatAnalysis(raw.analysis.analysis)
+      : raw?.analysis || "No analysis available.",
   };
 }
 
