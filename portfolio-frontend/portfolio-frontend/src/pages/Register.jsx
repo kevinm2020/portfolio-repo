@@ -3,6 +3,7 @@ import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import "./DeveloperCommentary.css";
 import DevNote from "../components/DevNote";
+import "./Register.css";
 
 const isValidEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -30,7 +31,6 @@ function Register() {
   const [success, setSuccess] = useState("");
 
   const navigate = useNavigate();
-
 
   /**
    * Handles registration
@@ -81,12 +81,12 @@ function Register() {
     try 
     {
       await api.post("https://kevin-martinez-portfolio-backend.onrender.com/api/auth/register", {
-      firstName: firstName.trim(),
-      lastName: lastName.trim(),
-      email: email.trim().toLowerCase(),
-      password,
-      role: "USER"
-    });
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim().toLowerCase(),
+        password,
+        role: "USER"
+      });
 
       // After register, send user to login page
       setSuccess("Registration successful!");
@@ -111,53 +111,75 @@ function Register() {
     }
   };
 
-
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
+    <div className="register-page">
 
-      {error && <p style={{ color: "red" }}>❌ {error}</p>}
-      {success && <p style={{ color: "green" }}>✅ {success}</p>}
+      {/* CARD */}
+      <div className="register-card">
 
-      <input
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
+        {/* HEADER */}
+        <section className="register-header">
+          <h2 className="register-title">Create Account</h2>
+          <p className="register-subtitle">Sign up to get started</p>
+        </section>
+
+        {/* FEEDBACK */}
+        {error && <p className="register-error">❌ {error}</p>}
+        {success && <p className="register-success">✅ {success}</p>}
+
+        {/* FORM */}
+        <form className="register-form" onSubmit={handleSubmit}>
+
+          <input
+            className="register-input"
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
   
-      <input
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+          <input
+            className="register-input"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+          <input
+            className="register-input"
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-      <button type="submit">Register</button>
+          <button className="register-button" type="submit">
+            Register
+          </button>
 
-      <div className="dev-wrapper">
-        <DevNote
-          title="Devloper Commentary: Register Page"
-          frontend="This component manages the registration form, handles user input, and 
-          communicates with the backend for account creation."
-          backend="POST request to /api/auth/register to create new user."
-          security="Valid registration returns success message, and procceds to login page. Errors are handled and displayed to the user."
-        />
+        </form>
+
+        {/* DEV NOTE */}
+        <div className="dev-wrapper">
+          <DevNote
+            title="Devloper Commentary: Register Page"
+            frontend="This component manages the registration form, handles user input, and communicates with the backend for account creation."
+            backend="POST request to /api/auth/register to create new user."
+            security="Valid registration returns success message, and procceds to login page. Errors are handled and displayed to the user."
+          />
+        </div>
+
       </div>
-    </form>
+
+    </div>
   );
 }
 

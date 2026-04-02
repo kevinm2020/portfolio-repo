@@ -85,104 +85,134 @@ const SonicAnalyzer = () => {
   };
 
   return (
-    <div className="sonic-container">
+    <div className="sonic-page">
 
-      <div className="dev-wrapper">
-        <DevNote
-          title="Sonic AI (microservice) DevNotes"
-          frontend="Frontend handles input, rendering, and local history via localStorage."
-          backend="Backend is a FastAPI microservice deployed on Render."
-        />
-      </div>
+      {/* HERO / HEADER */}
+      <section className="sonic-hero">
+        <h1 className="sonic-title">Sonic AI</h1>
+        <h2 className="sonic-subtitle">
+          AI-powered song analysis using Spotify + LLMs
+        </h2>
+        <p className="sonic-description">
+          Enter a song and artist to generate structured musical insights including tempo, mood,
+          audio features, and AI-generated analysis.
+        </p>
+      </section>
 
-      <h1 className="sonic-title">Sonic AI Song Analyzer - BETA 1.5</h1> 
-      <h2 className="sonic-subtitle">Built with React, Python, Spotify API and OpenAI LLM API</h2>
-       <h4 className="sonic-subtitle">Instructions: Enter a song and artist to analyze</h4>
+      {/* DEV NOTES */}
+      <section className="sonic-dev-section">
+        <div className="dev-wrapper">
+          <DevNote
+            title="Sonic AI (microservice) DevNotes"
+            frontend="Frontend handles input, rendering, and local history via localStorage."
+            backend="Backend is a FastAPI microservice deployed on Render."
+          />
+        </div>
+      </section>
 
-      <div className="sonic-status">
-        {backendStatus === "checking" && <p>🟡 Connecting...</p>}
-        {backendStatus === "ok" && <p>🟢 Online</p>}
-        {backendStatus === "error" && <p>🔴 Offline</p>}
-      </div>
+      {/* STATUS */}
+      <section className="sonic-status-section">
+        <div className="sonic-status">
+          {backendStatus === "checking" && <p>🟡 Connecting to Sonic Backend Service...</p>}
+          {backendStatus === "ok" && <p>🟢 Sonic Backend Service Online</p>}
+          {backendStatus === "error" && <p>🔴 Sonic Backend Service Offline</p>}
+        </div>
+      </section>
 
-      {/* FORM */}
-      <form className="sonic-form" onSubmit={handleSubmit}>
-        <input
-          className="sonic-input"
-          type="text"
-          placeholder="Song Title"
-          value={song}
-          onChange={(e) => setSong(e.target.value)}
-        />
-        <input
-          className="sonic-input"
-          type="text"
-          placeholder="Artist Name"
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
-        />
-        <button className="sonic-button" type="submit" disabled={loading}>
-          {loading ? "Analyzing..." : "Analyze"}
-        </button>
-      </form>
+      {/* INPUT FORM */}
+      <section className="sonic-form-section">
+        <form className="sonic-form" onSubmit={handleSubmit}>
+          <input
+            className="sonic-input"
+            type="text"
+            placeholder="Song Title"
+            value={song}
+            onChange={(e) => setSong(e.target.value)}
+          />
 
-      {loading && <p>Analyzing...</p>}
-      {error && <p className="sonic-error">{error}</p>}
+          <input
+            className="sonic-input"
+            type="text"
+            placeholder="Artist Name"
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+          />
+
+          <button className="sonic-button" type="submit" disabled={loading}>
+            {loading ? "Analyzing...Might take a minute" : "Analyze Song"}
+          </button>
+        </form>
+
+        {loading && <p className="sonic-loading">Analyzing...</p>}
+        {error && <p className="sonic-error">{error}</p>}
+      </section>
 
       {/* RESULT */}
       {result && (
-        <div className="sonic-result">
-          <h3>
-            {result.title} — {result.artist}
-          </h3>
+        <section className="sonic-result-section">
+          <div className="sonic-result-card">
 
-          <p><strong>Album:</strong> {result.album}</p>
-          <p><strong>Released:</strong> {result.release_date || "N/A"}</p>
-          <p><strong>Duration:</strong> {formatDuration(result.duration)}</p>
-          <p><strong>Explicit:</strong> {result.explicit ? "Yes" : "No"}</p>
-          <p><strong>Popularity:</strong> {result.popularity ?? "N/A"}</p>
+            <h3 className="result-title">
+              {result.title} — {result.artist}
+            </h3>
 
-          <p><strong>Key:</strong> {result.key || "N/A"} {result.mode || ""}</p>
-          <p><strong>Tempo:</strong> {result.tempo ? `${Math.round(result.tempo)} BPM` : "N/A"}</p>
+            <div className="result-meta">
+              <p><strong>Album:</strong> {result.album}</p>
+              <p><strong>Released:</strong> {result.release_date || "N/A"}</p>
+              <p><strong>Duration:</strong> {formatDuration(result.duration)}</p>
+              <p><strong>Explicit:</strong> {result.explicit ? "Yes" : "No"}</p>
+              <p><strong>Popularity:</strong> {result.popularity ?? "N/A"}</p>
+              <p><strong>Key:</strong> {result.key || "N/A"} {result.mode || ""}</p>
+              <p><strong>Tempo:</strong> {result.tempo ? `${Math.round(result.tempo)} BPM` : "N/A"}</p>
+            </div>
 
-          <h4>Audio Features</h4>
-          <ul>
-            <li>Energy: {pct(result.energy)}</li>
-            <li>Danceability: {pct(result.danceability)}</li>
-            <li>Valence: {pct(result.valence)}</li>
-            <li>Speechiness: {pct(result.speechiness)}</li>
-            <li>Acousticness: {pct(result.acousticness)}</li>
-            <li>Instrumentalness: {pct(result.instrumentalness)}</li>
-            <li>Liveness: {pct(result.liveness)}</li>
-          </ul>
+            <div className="features-section">
+              <h4>Audio Features</h4>
+              <ul className="features-list">
+                <li>Energy: {pct(result.energy)}</li>
+                <li>Danceability: {pct(result.danceability)}</li>
+                <li>Valence: {pct(result.valence)}</li>
+                <li>Speechiness: {pct(result.speechiness)}</li>
+                <li>Acousticness: {pct(result.acousticness)}</li>
+                <li>Instrumentalness: {pct(result.instrumentalness)}</li>
+                <li>Liveness: {pct(result.liveness)}</li>
+              </ul>
+            </div>
 
-          <h4>Chords</h4>
-          <ul>
-            {result.chords.length > 0 ? (
-              result.chords.map((chord, i) => <li key={i}>{chord}</li>)
-            ) : (
-              <li>No chords available</li>
-            )}
-          </ul>
+            <div className="chords-section">
+              <h4>Chords</h4>
+              <ul className="chords-list">
+                {result.chords.length > 0 ? (
+                  result.chords.map((chord, i) => <li key={i}>{chord}</li>)
+                ) : (
+                  <li>No chords available</li>
+                )}
+              </ul>
+            </div>
 
-          <h4>Analysis</h4>
-          <ReactMarkdown>{result.analysis}</ReactMarkdown>
-        </div>
+            <div className="analysis-section">
+              <h4>Analysis</h4>
+              <ReactMarkdown>{result.analysis}</ReactMarkdown>
+            </div>
+
+          </div>
+        </section>
       )}
 
       {/* HISTORY */}
       {history.length > 0 && (
-        <div>
+        <section className="history-section">
           <h3>Recent Analyses</h3>
-          <ul>
+          <ul className="history-list">
             {history.map((item, index) => (
               <li key={index} onClick={() => setResult(item)}>
                 {item.title} — {item.artist}
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
+
     </div>
   );
 };

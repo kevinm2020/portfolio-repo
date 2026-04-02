@@ -4,12 +4,14 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./DeveloperCommentary.css";
 import DevNote from "../components/DevNote";
+import "./Login.css";
 
 function Login() {
 
   // Form state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   // Feedback messages
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -35,7 +37,11 @@ function Login() {
 
     try 
     {
-      const response = await api.post("https://kevin-martinez-portfolio-backend.onrender.com/api/auth/login", { email, password });
+      const response = await api.post(
+        "https://kevin-martinez-portfolio-backend.onrender.com/api/auth/login",
+        { email, password }
+      );
+
       login({
         token: response.data.token,
         role: response.data.role,
@@ -90,38 +96,57 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div className="login-page">
 
-      {error && <p style={{ color: "red" }}>❌ {error}</p>}
-      {success && <p style={{ color: "green" }}>✅ {success}</p>}
+      {/* LOGIN CARD */}
+      <div className="login-card">
 
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <section className="login-header">
+          <h2 className="login-title">Login</h2>
+          <p className="login-subtitle">Welcome back. Please sign in.</p>
+        </section>
 
-      <input
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        {/* FEEDBACK */}
+        {error && <p className="login-error">❌ {error}</p>}
+        {success && <p className="login-success">✅ {success}</p>}
 
-      <button type="submit">Login</button>
+        {/* FORM */}
+        <form className="login-form" onSubmit={handleSubmit}>
 
-      <div className="dev-wrapper">
-        <DevNote
-          title="Devloper Commentary: Login Page"
-          frontend=" This component manages the login form, handles user input, and communicates with the backend for authentication."
-          backend=" Here we are performing a POST request to the /api/auth/login endpoint for authentication."
-          security="On successful login, we store the token and user info in context. We also handle various error cases to provide feedback to the user."
-  
-        />
+          <input
+            className="login-input"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            className="login-input"
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button className="login-button" type="submit">
+            Login
+          </button>
+
+        </form>
+
+        {/* DEV NOTE */}
+        <div className="dev-wrapper">
+          <DevNote
+            title="Devloper Commentary: Login Page"
+            frontend=" This component manages the login form, handles user input, and communicates with the backend for authentication."
+            backend=" Here we are performing a POST request to the /api/auth/login endpoint for authentication."
+            security="On successful login, we store the token and user info in context. We also handle various error cases to provide feedback to the user."
+          />
+        </div>
+
       </div>
 
-    </form>
+    </div>
   );
 }
 

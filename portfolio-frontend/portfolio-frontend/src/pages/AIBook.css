@@ -1,0 +1,137 @@
+/* Page Container */
+.ai-book-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  color: #1d1d1f;
+  background: linear-gradient(to bottom, #ffffff, #f5f5f7);
+}
+
+/* HERO */
+.hero-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero-title {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  color: #6e6e73;
+  margin-bottom: 20px;
+}
+
+.hero-description {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #3a3a3c;
+}
+
+/* DEV SECTION */
+.dev-section {
+  margin: 50px 0;
+}
+
+.dev-wrapper {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* INTRO */
+.intro-section {
+  margin: 40px 0 20px;
+}
+
+.intro-section h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.intro-section p {
+  color: #6e6e73;
+}
+
+/* TABLE SECTION */
+.table-section {
+  margin-top: 40px;
+}
+
+.table-section h2 {
+  margin-bottom: 16px;
+}
+
+/* TABLE */
+.table-container {
+  overflow-x: auto;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.chapters-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.chapters-table thead {
+  background: #f5f5f7;
+}
+
+.chapters-table th,
+.chapters-table td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.chapters-table th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6e6e73;
+}
+
+.chapters-table td {
+  font-size: 14px;
+  border-top: 1px solid #e5e5ea;
+}
+
+/* Row hover effect */
+.chapters-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.chapters-table tbody tr:hover {
+  background: #f9f9fb;
+}
+
+/* BUTTON */
+.read-button {
+  background: #0071e3;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.read-button:hover {
+  background: #005bb5;
+  transform: translateY(-1px);
+}
+
+.read-button:active {
+  transform: scale(0.98);
+}
