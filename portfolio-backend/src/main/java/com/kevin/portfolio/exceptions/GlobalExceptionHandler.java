@@ -34,3 +34,12 @@ public class GlobalExceptionHandler
 
     
 }
+
+
+/*
+
+A Rest Controller Advice is a special type of controller in Spring that allows you to handle exceptions globally across your application.
+In simple terms, it acts as a centralized error handler for your RESTful APIs. When an exception is thrown in any of your controllers, the Rest Controller Advice can catch that exception and return a custom response to the client.
+This makes our REST API more robust and user-friendly, as we can provide meaningful error messages and appropriate HTTP status codes when something goes wrong. 
+In this code, we have handlers for UserNotFoundException, BadCredentialsException, and ExpiredJwtException, each returning a specific response to the client when those exceptions occur.
+ */

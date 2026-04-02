@@ -12,3 +12,9 @@ public interface ChapterRepository extends JpaRepository<Chapter, Long> {
     List<Chapter> findAllByPublishedTrueOrderByNumberAsc();
 }
  
+
+/*
+This repository interface extends JpaRepository, which provides basic CRUD operations for the Chapter entity. 
+The custom method findAllByPublishedTrueOrderByNumberAsc() retrieves all chapters that are marked as published (published = true) and orders them by their number in ascending order. 
+This allows the application to easily fetch only the chapters that should be visible to readers, while keeping drafts hidden.
+*/

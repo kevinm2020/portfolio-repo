@@ -15,3 +15,8 @@ public class HealthController
     );
 }
 }
+
+
+/*
+This controller provides a simple health check endpoint to verify that the application is running correctly.
+*/

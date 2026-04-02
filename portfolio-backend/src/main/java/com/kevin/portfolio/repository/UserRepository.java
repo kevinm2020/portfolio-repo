@@ -31,4 +31,6 @@ Talks to the database
 Saves entities
 Finds entities
 Deletes entities
+
+This deals with User record for registration and login. 
 */

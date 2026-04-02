@@ -33,3 +33,11 @@ public class ChapterController {
         return chapterService.getChapterById(id);
     }
 }
+
+/*
+This controller handles HTTP requests related to chapters. It provides endpoints for creating, reading, updating, and deleting chapters.
+The endpoints include:
+- POST /api/chapters: Creates a new chapter by accepting a Chapter object in the request body and saving it using the ChapterService.
+- GET /api/chapters: Retrieves a list of all published chapters by calling the ChapterService.
+- GET /api/chapters/{id}: Retrieves a single chapter by its ID, including the full content, by calling the ChapterService.
+*/

@@ -74,4 +74,10 @@ User must hit the register endpoint with their data provided to register.
 Terminal Commands
  ./mvnw spring-boot:run
 
+
+This controller is limited to dealing with user registration and login. It has three endpoints:
+- POST /api/auth/register → for user registration
+- POST /api/auth/login → for user login
+- GET /api/auth/all → for fetching all users (admin only)
+
 */
